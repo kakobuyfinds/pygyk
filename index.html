@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>iTaoBuy spreadsheet | Product Finds, QC and Shipping Checklist</title>
+<meta name="description" content="Search iTaoBuy spreadsheet finds by item ID or category. Compare reference prices from HipobuyFind and check sizing, warehouse photos and shipping before ordering.">
+<style>
+:root{color-scheme:light;--ink:#17342a;--green:#14543d;--soft:#dfede4;--line:#cbdad0}
+*{box-sizing:border-box}
+body{margin:0;background:#f6f8f3;color:var(--ink);font:1rem/1.6 system-ui,sans-serif}
+main,footer{width:min(100% - 2rem,68rem);margin:auto}
+header{text-align:center;padding:clamp(2rem,7vw,5rem) 1rem;background:var(--soft);border-radius:0 0 2rem 2rem}
+h1,h2{font-family:Georgia,serif;line-height:1.1}
+h1{font-size:clamp(2.5rem,8vw,5.5rem);margin:0}
+h2{font-size:clamp(1.75rem,4vw,2.5rem)}
+header p{max-width:37rem;margin:1rem auto}
+a{color:var(--green)}
+.actions{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap}
+.actions a{padding:.7rem 1.1rem;border:2px solid var(--green);border-radius:.5rem;text-decoration:none;font-weight:700}
+.actions a:first-child{background:var(--green);color:white}
+section{margin:3rem 0}
+.catalog{background:white;border:1px solid var(--line);border-radius:1rem;padding:clamp(1rem,4vw,2rem)}
+.filters[hidden]{display:none}
+.filters{display:flex;gap:1rem;flex-wrap:wrap}
+label{display:grid;gap:.25rem;font-weight:700}
+label:first-child{flex:1 1 13rem}
+input,select{font:inherit;padding:.55rem;border:1px solid #75887e;border-radius:.4rem;background:white;color:inherit;width:100%}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;text-align:left;font-variant-numeric:tabular-nums}
+caption{text-align:left;padding:.5rem 0;color:#465c51}
+th,td{padding:.65rem;border-bottom:1px solid var(--line)}
+thead{background:var(--soft)}
+td:last-child,th:last-child{white-space:nowrap}
+details{border-bottom:1px solid var(--line);padding:.75rem 0}
+summary{cursor:pointer;font-weight:700}
+footer{padding:0 0 2rem;text-align:center}
+:focus-visible{outline:3px solid #96701b;outline-offset:3px}
+</style>
+<link rel="canonical" href="https://kakobuyfinds.github.io/pygyk/">
+</head>
+<body>
+<!-- index.html
+Search research: itaobuysheets.com emphasizes categories and QC photos; itaobuy-spreadsheet.net offers name and ID search; itaobuyspreadsheet.net covers freight and agent workflow. This page puts searchable source IDs, reference CNY prices, and a practical QC and landed-cost checklist in one crawlable page. Search results reviewed through web search; exact Google first-page positions were not verified.
+Catalog source: https://hipobuyfind.com/
+Indexing: A public deployment URL was not supplied, so no Google or Bing submission was made. After publishing, request indexing via Google Search Console URL Inspection and submit the URL via Bing Webmaster Tools.
+Google: https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl
+Bing: https://www.bing.com/webmasters/help/URL-Submission-62f2860b
+-->
+<main>
+<header>
+<h1>iTaoBuy spreadsheet</h1>
+<p>Compare shoes, hoodies, tees and pants from the HipobuyFind catalog. Save the item ID and check sizing, warehouse photos and shipping before you order.</p>
+<div class="actions">
+<a href="https://hipobuyfind.com">iTaoBuy spreadsheet</a>
+<a href="https://hipobuyfind.com">Buy it now</a>
+</div>
+<p>Independent shopping guide. Both buttons open HipobuyFind.</p>
+</header>
+<section class="catalog" aria-labelledby="catalog-title">
+<h2 id="catalog-title">Product catalog</h2>
+<div class="filters" id="filters" hidden>
+<label>Search by name or item ID<input type="search" id="query" placeholder="Try canvas or 148188"></label>
+<label>Category<select id="category"><option value="">All categories</option><option>Shoes</option><option>Hoodies</option><option>T-shirts</option><option>Pants</option></select></label>
+</div>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Product listings">
+<table>
+<caption>Selected HipobuyFind listings. Check current pricing and availability at the source.</caption>
+<thead><tr><th scope="col">Product</th><th scope="col">Category</th><th scope="col">Item ID</th><th scope="col">Listed price</th></tr></thead>
+<tbody id="products">
+<tr><th scope="row">Black Canvas Low-Top Sneakers with Gum Sole</th><td>Shoes</td><td>148188</td><td>¥450.00</td></tr>
+<tr><th scope="row">Cream Chunky Sneakers with Wide Laces</th><td>Shoes</td><td>148191</td><td>¥350.00</td></tr>
+<tr><th scope="row">Fleece-Lined Hoodie</th><td>Hoodies</td><td>154917</td><td>¥170.00</td></tr>
+<tr><th scope="row">Gray Hooded Hoodie</th><td>Hoodies</td><td>154936</td><td>¥300.00</td></tr>
+<tr><th scope="row">Graphic Short-Sleeve T-Shirt</th><td>T-shirts</td><td>154920</td><td>¥105.00</td></tr>
+<tr><th scope="row">Gymshark Relaxed-Fit Short-Sleeve T-Shirt</th><td>T-shirts</td><td>154888</td><td>¥115.00</td></tr>
+<tr><th scope="row">Corteiz C-Star Washed Blue Wide-Leg Jeans</th><td>Pants</td><td>154952</td><td>¥210.00</td></tr>
+<tr><th scope="row">Corteiz Guerillaz Cargo Pants</th><td>Pants</td><td>154943</td><td>¥218.00</td></tr>
+</tbody>
+</table>
+</div>
+<p id="results" role="status"></p>
+</section>
+<section aria-labelledby="guide">
+<h2 id="guide">Before you place an iTaoBuy order</h2>
+<ol>
+<li><strong>Match the listing.</strong> Search HipobuyFind by product name and use the item ID to distinguish similar results. Check the seller link, selected color and size, and confirm that your purchasing agent accepts the source link.</li>
+<li><strong>Compare measurements in centimeters.</strong> Measure a garment you already own. Match chest width and body length for tops, and waistband, rise and inseam for pants. For shoes, check whether the seller chart lists foot length or insole length.</li>
+<li><strong>Review warehouse QC photos.</strong> Check the size tag, color and visible stitching. If sizing is uncertain, ask for a ruler photo and check the exchange deadline before approving shipment.</li>
+<li><strong>Estimate the delivered total.</strong> Add the selected variant price, seller-to-warehouse delivery, agent fees, international freight and any applicable import charges. Compare freight estimates using packed dimensions and weight.</li>
+</ol>
+</section>
+<section aria-labelledby="faq">
+<h2 id="faq">Frequently asked questions</h2>
+<details><summary>Can I use the HipobuyFind item ID in iTaoBuy?</summary><p>Use the item ID as a reference within the HipobuyFind catalog. If the listing provides a seller link, use that link to check availability and whether iTaoBuy can process it.</p></details>
+<details><summary>Does the listed price include international shipping?</summary><p>The table shows reference item prices in Chinese yuan. Check the seller price for your selected variant and obtain a separate freight quote for your packed parcel.</p></details>
+<details><summary>What if the seller link is unavailable?</summary><p>Search by the product name and compare the photos, measurements and variant details before choosing another listing.</p></details>
+</section>
+</main>
+<footer>Catalog source: HipobuyFind</footer>
+<script>
+const query = document.querySelector('#query');
+const category = document.querySelector('#category');
+const results = document.querySelector('#results');
+const rows = Array.from(document.querySelectorAll('#products tr'));
+
+function filterProducts() {
+  const terms = query.value.toLowerCase().trim().split(/\s+/);
+  let count = 0;
+  for (const row of rows) {
+    const searchable = row.textContent.toLowerCase();
+    const matchesCategory = !category.value || row.cells[1].textContent === category.value;
+    row.hidden = !matchesCategory || !terms.every(term => searchable.includes(term));
+    count += Number(!row.hidden);
+  }
+  results.textContent = count ? count + ' of ' + rows.length + ' listings' : 'No matching listings. Try another name or item ID.';
+}
+
+document.querySelector('#filters').hidden = false;
+query.addEventListener('input', filterProducts);
+category.addEventListener('change', filterProducts);
+filterProducts();
+</script>
+</body>
+</html>
